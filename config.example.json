@@ -1,0 +1,86 @@
+[
+    {
+        "name": "1. Perfect Success (GET)",
+        "url": "https://jsonplaceholder.typicode.com/todos/1",
+        "method": "GET",
+        "enabled": true,
+        "headers": {},
+        "url_params": {},
+        "json_payload": {},
+        "timeout_ms": 5000,
+        "max_retries": 1,
+        "expected_status": [
+            200
+        ],
+        "fail_on_status": [
+            404,
+            500
+        ],
+        "max_expected_delay_ms": 1000
+    },
+    {
+        "name": "2. Complex Request (POST)",
+        "url": "https://postman-echo.com/post",
+        "method": "POST",
+        "enabled": true,
+        "headers": {
+            "Content-Type": "application/json",
+            "X-API-Key": "RUNTIME_VAL"
+        },
+        "url_params": {
+            "test_mode": "true"
+        },
+        "json_payload": {
+            "user_id": "12345",
+            "action": "update_profile"
+        },
+        "timeout_ms": 5000,
+        "max_retries": 3,
+        "expected_status": [
+            200
+        ],
+        "fail_on_status": [
+            400,
+            401,
+            403
+        ],
+        "max_expected_delay_ms": 2000
+    },
+    {
+        "name": "3. Forced Timeout Test (Will Fail)",
+        "url": "https://httpstat.us/200?sleep=5000",
+        "method": "GET",
+        "enabled": true,
+        "headers": {},
+        "url_params": {},
+        "json_payload": {},
+        "timeout_ms": 2000,
+        "max_retries": 1,
+        "expected_status": [
+            200
+        ],
+        "fail_on_status": [],
+        "max_expected_delay_ms": 1000
+    },
+    {
+        "name": "4. Forced 503 Server Error (Will Fail)",
+        "url": "https://httpstat.us/503",
+        "method": "GET",
+        "enabled": true,
+        "headers": {},
+        "url_params": {},
+        "json_payload": {},
+        "timeout_ms": 5000,
+        "max_retries": 2,
+        "expected_status": [
+            200
+        ],
+        "fail_on_status": [
+            500,
+            502,
+            503,
+            504
+        ],
+        "max_expected_delay_ms": 1000
+    }
+]
